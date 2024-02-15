@@ -17,7 +17,6 @@ func _ready() -> void:
 
 
 func _on_HUD_start() -> void:
-	$Bird.start()
 	$PipeSpawner.start()
 
 func _on_Player_dead() -> void:

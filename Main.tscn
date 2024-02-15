@@ -45,7 +45,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Bird" parent="." instance=ExtResource("2")]
-position = Vector2(153, 276)
+position = Vector2(100, 276)
 jumpPower = -600
 
 [node name="PipeSpawner" parent="." instance=ExtResource("1")]

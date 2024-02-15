@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bheh0501dt6u7"]
+[gd_scene load_steps=7 format=3 uid="uid://bheh0501dt6u7"]
 
 [ext_resource type="Script" path="res://Objects/pipes.gd" id="1_abts3"]
 [ext_resource type="Texture2D" uid="uid://boifw68e6amef" path="res://Objects/PipesDown.png" id="2_3l1wc"]
 [ext_resource type="Script" path="res://Objects/ScoreUp.gd" id="3_p8ar7"]
+[ext_resource type="Texture2D" uid="uid://c2wix6vrvv08b" path="res://Objects/Pipes.png" id="3_v6owu"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(46, 318.667)
@@ -38,12 +39,11 @@ shape = SubResource("1")
 
 [node name="PipeDown" type="Sprite2D" parent="."]
 position = Vector2(2.00003, 275.5)
-rotation = 3.14159
 scale = Vector2(1, 1.5)
-texture = ExtResource("2_3l1wc")
+texture = ExtResource("3_v6owu")
 
 [node name="PipeDown" type="Sprite2D" parent="PipeDown"]
-position = Vector2(0, -251.5)
+position = Vector2(-3.05176e-05, 269)
 scale = Vector2(1, 1.5)
 texture = ExtResource("2_3l1wc")
 offset = Vector2(0.215, 0)

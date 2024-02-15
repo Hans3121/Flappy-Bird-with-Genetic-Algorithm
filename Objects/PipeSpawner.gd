@@ -17,7 +17,6 @@ func end() -> void:
 	timer.stop()
 
 
-
 func _on_Timer_timeout() -> void:
 	_spawn_pipe()
 
@@ -25,5 +24,6 @@ func _spawn_pipe() -> void:
 	var pipe = pipes.instantiate()
 	add_child(pipe)
 
+	Data.queuePipe(pipe)
 	pipe.speed = pipeSpeed
 	pipe.position.y += randf_range(-200, 200)
