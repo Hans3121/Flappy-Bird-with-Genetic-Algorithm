@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Objects/PipeSpawner.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bheh0501dt6u7" path="res://Objects/pipes.tscn" id="2"]
+
+[node name="PipeSpawner" type="Node2D"]
+position = Vector2( 1082, 300 )
+script = ExtResource( 1 )
+pipes = ExtResource( 2 )
+pipeSpeed = 300
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

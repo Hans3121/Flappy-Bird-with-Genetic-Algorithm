@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bit42bltxiu1r"]
+
+[ext_resource type="Theme" uid="uid://bn1t2vsldn1b8" path="res://HUD/HUD_Theme.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://8peb5qedcy3d" path="res://HUD/PlusJakartaSans-VariableFont_wght.ttf" id="2_l0x57"]
+[ext_resource type="Script" path="res://HUD/HUD.gd" id="3"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("3")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.485
+offset_top = -95.0
+offset_right = 262.515
+offset_bottom = 44.0
+scale = Vector2(0.999035, 1)
+pivot_offset = Vector2(-534, 22)
+theme_override_fonts/font = ExtResource("2_l0x57")
+theme_override_font_sizes/font_size = 30
+text = "Flappy Blorb
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = -1.0
+offset_right = 129.0
+offset_bottom = 63.0
+scale = Vector2(0.655102, 0.66494)
+theme = ExtResource("2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score : "
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.4847
+offset_top = -8.99997
+offset_right = 134.515
+offset_bottom = 61.0
+scale = Vector2(0.545121, 0.54164)
+theme = ExtResource("2")
+text = "Play"
+
+[connection signal="pressed" from="PlayButton" to="." method="_start"]

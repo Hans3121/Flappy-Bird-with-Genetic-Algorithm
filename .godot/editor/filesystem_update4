@@ -1,0 +1,9 @@
+res://default_env.tres
+res://Main.tscn
+res://Player/Bird.tscn
+res://HUD/HUD.tscn
+res://Objects/pipes.tscn
+res://Autoloads/UIEvents.gd
+res://Player/Bird.gd
+res://HUD/HUD.gd
+res://Objects/CloudSpawner.gd

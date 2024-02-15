@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dy7tt27iwtpii"]
+
+[ext_resource type="PackedScene" path="res://Objects/PipeSpawner.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://d27436bg3g3vj" path="res://Player/Bird.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bit42bltxiu1r" path="res://HUD/HUD.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://7bnyqv56h56n" path="res://Objects/Background.png" id="3_ker4i"]
+[ext_resource type="Script" path="res://Main.gd" id="4"]
+[ext_resource type="Script" path="res://Objects/CloudSpawner.gd" id="4_5bev1"]
+[ext_resource type="PackedScene" uid="uid://7ig0bxdqxpam" path="res://Objects/Cloud.tscn" id="5_6wxu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yswcy"]
+size = Vector2(1173, 14)
+
+[node name="Main" type="Node"]
+script = ExtResource("4")
+
+[node name="MapBoundaries" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries"]
+position = Vector2(576.5, -3)
+shape = SubResource("RectangleShape2D_yswcy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapBoundaries"]
+position = Vector2(577, 652)
+shape = SubResource("RectangleShape2D_yswcy")
+
+[node name="HUD" parent="." instance=ExtResource("3")]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3_ker4i")
+
+[node name="CloudSpawner" type="Node2D" parent="."]
+position = Vector2(1021, 311)
+script = ExtResource("4_5bev1")
+cloud = ExtResource("5_6wxu6")
+cloudSpeed = 100
+
+[node name="Timer" type="Timer" parent="CloudSpawner"]
+wait_time = 5.0
+autostart = true
+
+[node name="Bird" parent="." instance=ExtResource("2")]
+position = Vector2(153, 276)
+jumpPower = -600
+
+[node name="PipeSpawner" parent="." instance=ExtResource("1")]
+
+[connection signal="start" from="HUD" to="." method="_on_HUD_start"]

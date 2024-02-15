@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bheh0501dt6u7"]
+
+[ext_resource type="Script" path="res://Objects/pipes.gd" id="1_abts3"]
+[ext_resource type="Texture2D" uid="uid://boifw68e6amef" path="res://Objects/PipesDown.png" id="2_3l1wc"]
+[ext_resource type="Script" path="res://Objects/ScoreUp.gd" id="3_p8ar7"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(46, 318.667)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(10, 167)
+
+[node name="Pipes" type="StaticBody2D"]
+texture_filter = 1
+position = Vector2(-1, 1)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_abts3")
+speed = 50
+
+[node name="PipeUp" type="Sprite2D" parent="."]
+position = Vector2(-1, -251.5)
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_3l1wc")
+
+[node name="PipeUp" type="Sprite2D" parent="PipeUp"]
+position = Vector2(0, -251.5)
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_3l1wc")
+offset = Vector2(0.215, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 60.4294, 220.699)
+
+[node name="PipeUpCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -325)
+scale = Vector2(1, 1.5)
+shape = SubResource("1")
+
+[node name="PipeDown" type="Sprite2D" parent="."]
+position = Vector2(2.00003, 275.5)
+rotation = 3.14159
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_3l1wc")
+
+[node name="PipeDown" type="Sprite2D" parent="PipeDown"]
+position = Vector2(0, -251.5)
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_3l1wc")
+offset = Vector2(0.215, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 60.4294, 220.699)
+
+[node name="PipeDownCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2.00003, 346)
+rotation = 3.14159
+scale = Vector2(1, 1.5)
+shape = SubResource("1")
+
+[node name="ScoreUp" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("3_p8ar7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreUp"]
+position = Vector2(0, 12.5)
+shape = SubResource("2")
+
+[connection signal="body_entered" from="ScoreUp" to="ScoreUp" method="_on_body_entered"]
