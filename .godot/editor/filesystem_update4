@@ -1,10 +1,12 @@
-res://Player/Bird.gd
 res://default_env.tres
-res://Objects/pipes.tscn
-res://Autoloads/Data.gd
-res://Objects/pipes.gd
 res://Main.tscn
-res://Objects/PipeSpawner.gd
 res://Player/Bird.tscn
 res://HUD/HUD.tscn
+res://Objects/pipes.tscn
+res://Trainers/Trainer.gd
 res://Main.gd
+res://HUD/HUD.gd
+res://HUD/feature_selection.tscn
+res://HUD/feature_selection.gd
+res://Autoloads/Config.gd
+res://Player/Bird.gd

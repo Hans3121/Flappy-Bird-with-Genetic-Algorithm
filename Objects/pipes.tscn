@@ -6,25 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://c2wix6vrvv08b" path="res://Objects/Pipes.png" id="3_v6owu"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(46, 318.667)
+size = Vector2(42, 301)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(10, 167)
 
-[node name="Pipes" type="StaticBody2D"]
+[node name="Pipes" type="Node2D"]
 texture_filter = 1
 position = Vector2(-1, 1)
-collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_abts3")
 speed = 50
 
-[node name="PipeUp" type="Sprite2D" parent="."]
-position = Vector2(-1, -251.5)
+[node name="PipeUp" type="StaticBody2D" parent="." groups=["Pipe"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="PipeUpSprite" type="Sprite2D" parent="PipeUp"]
+position = Vector2(-1, -171.5)
 scale = Vector2(1, 1.5)
 texture = ExtResource("2_3l1wc")
 
-[node name="PipeUp" type="Sprite2D" parent="PipeUp"]
+[node name="PipeUp" type="Sprite2D" parent="PipeUp/PipeUpSprite"]
 position = Vector2(0, -251.5)
 scale = Vector2(1, 1.5)
 texture = ExtResource("2_3l1wc")
@@ -32,17 +34,21 @@ offset = Vector2(0.215, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 60.4294, 220.699)
 
-[node name="PipeUpCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -325)
+[node name="PipeUpCollision" type="CollisionShape2D" parent="PipeUp"]
+position = Vector2(1, -236.75)
 scale = Vector2(1, 1.5)
 shape = SubResource("1")
 
-[node name="PipeDown" type="Sprite2D" parent="."]
-position = Vector2(2.00003, 275.5)
+[node name="PipeDown" type="StaticBody2D" parent="." groups=["Pipe"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="PipeDownSprite" type="Sprite2D" parent="PipeDown"]
+position = Vector2(-1, 168.5)
 scale = Vector2(1, 1.5)
 texture = ExtResource("3_v6owu")
 
-[node name="PipeDown" type="Sprite2D" parent="PipeDown"]
+[node name="PipeDown" type="Sprite2D" parent="PipeDown/PipeDownSprite"]
 position = Vector2(-3.05176e-05, 269)
 scale = Vector2(1, 1.5)
 texture = ExtResource("2_3l1wc")
@@ -50,18 +56,17 @@ offset = Vector2(0.215, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 60.4294, 220.699)
 
-[node name="PipeDownCollision" type="CollisionShape2D" parent="."]
-position = Vector2(2.00003, 346)
+[node name="PipeDownCollision" type="CollisionShape2D" parent="PipeDown"]
+position = Vector2(1.00002, 234)
 rotation = 3.14159
 scale = Vector2(1, 1.5)
 shape = SubResource("1")
 
-[node name="ScoreUp" type="Area2D" parent="."]
+[node name="ScoreUp2" type="Area2D" parent="."]
 collision_layer = 4
 script = ExtResource("3_p8ar7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreUp"]
-position = Vector2(0, 12.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreUp2"]
 shape = SubResource("2")
 
-[connection signal="body_entered" from="ScoreUp" to="ScoreUp" method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreUp2" to="ScoreUp2" method="_on_body_entered"]

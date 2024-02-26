@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy7tt27iwtpii"]
+[gd_scene load_steps=10 format=3 uid="uid://dy7tt27iwtpii"]
 
 [ext_resource type="PackedScene" path="res://Objects/PipeSpawner.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://d27436bg3g3vj" path="res://Player/Bird.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bit42bltxiu1r" path="res://HUD/HUD.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://7bnyqv56h56n" path="res://Objects/Background.png" id="3_ker4i"]
 [ext_resource type="Script" path="res://Main.gd" id="4"]
 [ext_resource type="Script" path="res://Objects/CloudSpawner.gd" id="4_5bev1"]
 [ext_resource type="PackedScene" uid="uid://7ig0bxdqxpam" path="res://Objects/Cloud.tscn" id="5_6wxu6"]
+[ext_resource type="Script" path="res://Trainers/Trainer.gd" id="8_knwro"]
+[ext_resource type="Texture2D" uid="uid://biwwbhp88wgul" path="res://icon.png" id="9_bkuhi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yswcy"]
 size = Vector2(1173, 14)
@@ -44,10 +45,21 @@ cloudSpeed = 100
 wait_time = 5.0
 autostart = true
 
-[node name="Bird" parent="." instance=ExtResource("2")]
-position = Vector2(100, 276)
-jumpPower = -600
-
 [node name="PipeSpawner" parent="." instance=ExtResource("1")]
+pipeSpeed = 600
+pipeInterval = 1
+
+[node name="Trainer" type="Node2D" parent="."]
+position = Vector2(100, 276)
+script = ExtResource("8_knwro")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(60, 144)
+texture = ExtResource("9_bkuhi")
+centered = false
+offset = Vector2(-64, 0)
 
 [connection signal="start" from="HUD" to="." method="_on_HUD_start"]
+[connection signal="generation_ended" from="Trainer" to="." method="_on_trainer_generation_ended" flags=3]
+[connection signal="next_generation_ready" from="Trainer" to="." method="_on_trainer_next_generation_ready" flags=3]

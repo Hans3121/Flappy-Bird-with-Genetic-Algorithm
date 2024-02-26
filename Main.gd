@@ -1,24 +1,21 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
-
+@onready var pipeSpawner := $PipeSpawner
+@onready var trainer := $Trainer
 
 func _on_HUD_start() -> void:
-	$PipeSpawner.start()
+	trainer.init()
+	trainer.prepare_next_generation()
 
-func _on_Player_dead() -> void:
-	$HUD.end()
-	$PipeSpawner.end()
+
+func _on_trainer_next_generation_ready() -> void:
+	Events.start_generation.emit()
+	UiEvents.next_generation.emit()
+	pipeSpawner.start()
+
+
+func _on_trainer_generation_ended() -> void:
+	Events.end_generation.emit()
+	pipeSpawner.end()
+	trainer.prepare_next_generation()
+
